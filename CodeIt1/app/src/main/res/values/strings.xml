@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="question_text">Does Arsenal suck?</string>
+    <string name="true_button">True</string>
+    <string name="question_soccer">Does Arsenal Suck?</string>
+    <string name="question_ivy">Columbia is the  best Ivy?</string>
+    <string name="question_hope">Is there hope?</string>
+    <string name="question_joke">Campbell\'s jokes are awesome?\"</string>
+    <string name="next_button">Next</string>
+    <string name="false_button">False</string>
+    <string name="previous_button">Prev</string>
+    <string name="cheat_button">Cheat!</string>
+</resources>
