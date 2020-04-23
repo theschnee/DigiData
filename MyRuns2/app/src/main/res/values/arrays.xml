@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="input_array">
+        <item>Manual</item>
+        <item>Automatic</item>
+        <item>GPS</item>
+    </string-array>
+
+    <string-array name="activities_array">
+        <item>Walking</item>
+        <item>Running</item>
+        <item>Cycling</item>
+        <item>Hiking</item>
+        <item>Soccer</item>
+        <item>Swimming</item>
+        <item>Skateboarding</item>
+        <item>Snowboarding</item>
+        <item>Crotchet</item>
+        <item>Lifting</item>
+        <item>Yoga</item>
+        <item>Sword Fighting</item>
+        <item>Basketball</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="reply_entries">reply_entries</string-array>
+    <string-array name="reply_values">reply_values</string-array>
+
+    <string-array name="unit_entries">
+        <item>Miles</item>
+        <item>Kilometres</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>Miles</item>
+        <item>Kilometres</item>
+    </string-array>
+
+
+</resources>
+
