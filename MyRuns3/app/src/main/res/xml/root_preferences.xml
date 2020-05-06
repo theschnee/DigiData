@@ -1,0 +1,56 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="rtl"
+    android:layoutMode="clipBounds"
+    android:textDirection="ltr">
+
+    <PreferenceCategory
+        android:id="@+id/application_settings"
+        android:layoutDirection="ltr"
+        android:layoutMode="opticalBounds"
+        app:title="Application Settings">
+
+        <SwitchPreferenceCompat
+            android:id="@+id/privacy_setting"
+            app:key="privacy"
+            app:summaryOff="@string/privacy_off"
+            app:summaryOn="@string/privacy_on"
+            app:title="@string/privacy_title" />
+
+        <ListPreference
+            android:id="@+id/unit_setting"
+            android:entries="@array/unit_entries"
+            android:entryValues="@array/unit_values"
+            android:summary="@string/unit_descriptor"
+            app:defaultValue="true"
+            app:key="unit"
+            app:title="@string/unit_title"
+            app:useSimpleSummaryProvider="false" />
+
+        <Preference
+            android:id="@+id/webpage_setting"
+            android:layoutDirection="rtl"
+            android:layoutMode="opticalBounds"
+            app:key="webpage"
+            app:summary="http://cs.dartmouth.edu/~campbell/cs65/cs65.html"
+            app:title="Webpage">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://cs.dartmouth.edu/~campbell/cs65/cs65.html" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:id="@+id/account_settings"
+        app:title="Account Settings">
+
+        <Preference
+            android:clickable="true"
+            android:contextClickable="false"
+            app:key="sign_out_settings_button"
+            app:title="@string/sign_out"></Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
