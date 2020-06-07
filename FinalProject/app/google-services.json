@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "627659575405",
+    "firebase_url": "https://cs65-final-project.firebaseio.com",
+    "project_id": "cs65-final-project",
+    "storage_bucket": "cs65-final-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627659575405:android:7640f7d8d922392f072f64",
+        "android_client_info": {
+          "package_name": "edu.cs.dartmouth.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627659575405-k63s79s33q75hcb8mg6te086f2ra3fad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr7NrL0yeswY9YbfzXZb9yUlilKeetUxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627659575405-k63s79s33q75hcb8mg6te086f2ra3fad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
