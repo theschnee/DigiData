@@ -2,8 +2,16 @@ package edu.cs.dartmouth.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +27,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+// Apache POI for Handling Excel Files
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -36,6 +54,7 @@ public class AddItemActivity extends AppCompatActivity {
     private ArrayList<String> received_sentences;
     private int counter = 0;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,77 +76,76 @@ public class AddItemActivity extends AppCompatActivity {
 
         //receivedWord = getIntent().getStringExtra("word");
         received_sentences = getIntent().getStringArrayListExtra("sentences");
+        assert received_sentences != null;
         for(int i = 0; i<received_sentences.size(); i++){
             if(received_sentences.get(i).contains("Gross Profit"))
                 mName.setText("Gross Profit");
       //      }else {
                 String[] split_recieved = received_sentences.get(i).trim().split("\\s+");
 
-                for(int j=0; j<split_recieved.length; j++){
+            for (String s : split_recieved) {
 
-               //    if(Integer.parseInt(split_recieved[0]) == java.lang.NumberFormatException)
-
-
+                //    if(Integer.parseInt(split_recieved[0]) == java.lang.NumberFormatException)
 
 
-                    if(split_recieved[j].contains("$") || split_recieved[j].contains("S")) {
-                        if (split_recieved[j].contains("Co") || split_recieved[j].contains("So")){
+                if (s.contains("$") || s.contains("S")) {
+                    if (s.contains("Co") || s.contains("So")) {
+                        break;
+                    }
+
+                    if (s.contains("S")) {
+                        s.replace("S", "$");
+                    }
+
+                    switch (counter) {
+                        case 0:
+                            mContent.setText(s);
+                            counter = counter + 1;
                             break;
-                        }
-
-                        if(split_recieved[j].contains("S")) {
-                            split_recieved[j].replace("S","$");
-                        }
-
-                        switch (counter){
-                            case 0:
-                                mContent.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 1:
-                                msecond.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 2:
-                                mthird.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 3:
-                                mfourth.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 4:
-                                mfifth.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 5:
-                                msixth.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 6:
-                                mseventh.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 7:
-                                meigth.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                            case 8:
-                                mnineth.setText(split_recieved[j]);
-                                counter = counter + 1;
-                                break;
-                        }
-
-
-                    //    mContent.setText(split_recieved[j]);
+                        case 1:
+                            msecond.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 2:
+                            mthird.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 3:
+                            mfourth.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 4:
+                            mfifth.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 5:
+                            msixth.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 6:
+                            mseventh.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 7:
+                            meigth.setText(s);
+                            counter = counter + 1;
+                            break;
+                        case 8:
+                            mnineth.setText(s);
+                            counter = counter + 1;
+                            break;
                     }
 
 
+                    //    mContent.setText(split_recieved[j]);
                 }
 
 
+            }
+
+
                 System.out.println("SIZE OF SPLIT ARRAY" + split_recieved.length);
-                System.out.println("CONTENTS OF SPLIT ARRAYYY" + Arrays.toString(split_recieved));
+                System.out.println("CONTENTS OF SPLIT ARRAY" + Arrays.toString(split_recieved));
 
 
                // if(!split_recieved[0].contains(" ")) {
@@ -250,7 +268,5 @@ public class AddItemActivity extends AppCompatActivity {
 
 
     }
-
-
 
 }
